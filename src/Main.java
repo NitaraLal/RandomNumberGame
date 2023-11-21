@@ -12,6 +12,8 @@ public class Main {
         Random rand = new Random();
         int userGuess = scanner.nextInt();
         int randNumber = rand.nextInt(1, 101);
+        int scoreCounter = 0;
+
         while (userGuess != randNumber) {
             if (userGuess < randNumber) {
                 System.out.println("Your guess was too low.");
@@ -20,8 +22,13 @@ public class Main {
             }
             System.out.print("Please try another number: ");
             userGuess = scanner.nextInt();
+
+            scoreCounter++;
         }
-        System.out.println("You got it! My number was " + randNumber);
+        System.out.println("You got it! My number was " + randNumber + ".");
+        System.out.println("It took you " + scoreCounter + " attempts to guess the number.");
+        scoreCounter = 0;
+
 
         System.out.print("Would you like to play again? Please type Yes or No: ");
         String decision = scanner.next();
@@ -40,8 +47,10 @@ public class Main {
                     }
                     System.out.print("Please try another number: ");
                     userGuess = scanner.nextInt();
+                    scoreCounter++;
                 }
-                System.out.println("You got it! My number was " + randNumber);
+                System.out.println("You got it! My number was " + randNumber + ".");
+                System.out.println("It took you " + scoreCounter + " attempts to guess the number.");
 
                 System.out.print("Would you like to play again? Please type Yes or No: ");
                 decision = scanner.next();

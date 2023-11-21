@@ -1,12 +1,12 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 import java.util.Random;
 import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Welcome to the Random Number Game");
 
-        System.out.println("I am thinking of a number from 1-100. Can you guess the number?: ");
+        System.out.println("Welcome to the Random Number Game!");
+
+        System.out.print("I am thinking of a number from 1-100. Can you guess the number?: ");
 
         Scanner scanner = new Scanner(System.in);
         Random rand = new Random();
@@ -14,14 +14,42 @@ public class Main {
         int randNumber = rand.nextInt(1, 101);
         while (userGuess != randNumber) {
             if (userGuess < randNumber) {
-                System.out.println("your guess was too low");
+                System.out.println("Your guess was too low.");
             } else {
-                System.out.println("your guess was too high");
+                System.out.println("Your guess was too high.");
             }
-            System.out.print(", please try again: ");
+            System.out.print("Please try another number: ");
             userGuess = scanner.nextInt();
         }
-        System.out.println("you got it!  My number was " + randNumber);
+        System.out.println("You got it! My number was " + randNumber);
 
+        System.out.print("Would you like to play again? Please type Yes or No: ");
+        String decision = scanner.next();
+        if (decision.equalsIgnoreCase("No")) {
+            System.out.println("Thank you for playing the Random Number Game!");
+        } else {
+            while (!decision.equalsIgnoreCase("No")) {
+                System.out.print("Great! Let's play again. Please guess the number: ");
+                userGuess = scanner.nextInt();
+                randNumber = rand.nextInt(1, 101);
+                while (userGuess != randNumber) {
+                    if (userGuess < randNumber) {
+                        System.out.println("Your guess was too low.");
+                    } else {
+                        System.out.println("Your guess was too high.");
+                    }
+                    System.out.print("Please try another number: ");
+                    userGuess = scanner.nextInt();
+                }
+                System.out.println("You got it! My number was " + randNumber);
+
+                System.out.print("Would you like to play again? Please type Yes or No: ");
+                decision = scanner.next();
+            }
+            System.out.print("Thank you for playing the Random Number Game!");
         }
+
+
+    }
+
 }
